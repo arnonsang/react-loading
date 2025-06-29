@@ -1,243 +1,212 @@
-import React from "react";
-import "./styles.css";
+import React from 'react';
+import './index.css';
+import { LoadingProps, LoadingVariant, LoadingSize, LoadingThemeColor } from './types';
+import { themeColors } from './types/constants';
 
-interface LoadingProps {
-  // Combined variants
-  variant?:
-    | "spinner"
-    | "dots"
-    | "pulse"
-    | "skeleton"
-    | "blank"
-    | "balls"
-    | "bars"
-    | "bubbles"
-    | "cubes"
-    | "cylon"
-    | "spin"
-    | "spinningBubbles"
-    | "spokes";
-
-  // Size presets from original version
-  size?: "sm" | "md" | "lg";
-
-  // Original color options
-  themeColor?: "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray";
-
-  // New customization options
-  color?: string;
-  width?: number | string;
-  height?: number | string;
-  delay?: number;
-
-  // Original options
-  text?: string;
-  fullPage?: boolean;
-  hideText?: boolean;
-  className?: string;
-}
+// Re-export types for external use
+export type { LoadingProps, LoadingVariant, LoadingSize, LoadingThemeColor };
 
 const Loading: React.FC<LoadingProps> = ({
-  variant = "spinner",
-  size = "md",
-  themeColor = "blue",
-  color = "#ffffff",
+  variant = 'spinner',
+  size = 'md',
+  themeColor = 'blue',
+  color,
   width,
   height,
   delay = 0,
-  text = "Loading...",
+  text = 'Loading...',
   fullPage = false,
   hideText = false,
-  className = "",
+  className = ''
 }) => {
-  const getClassName = (...classes: string[]) =>
-    [...classes, className].filter(Boolean).join(" ");
-
-  const containerClass = fullPage
-    ? "loading-container loading-fullpage"
-    : "loading-container";
-
-  const sizeClass = `loading-${size}`;
-  const colorClass = `loading-${themeColor}`;
-
-  // Convert size/width/height to CSS value
-  const getSize = (size: number | string | undefined) =>
-    typeof size === "number" ? `${size}px` : size;
-
-  // Base styles for custom size variants
+  const finalColor = color || themeColors[themeColor];
+  
   const containerStyle: React.CSSProperties = {
-    width: getSize(width),
-    height: getSize(height),
-    animationDelay: `${delay}ms`,
-    "--loading-color": color,
+    '--loading-color': finalColor,
+    animationDelay: `${delay}ms`
   } as React.CSSProperties;
 
-  const renderOriginalVariants = () => {
+  // Apply custom dimensions if provided
+  if (width) {
+    containerStyle.width = typeof width === 'number' ? `${width}px` : width;
+  }
+  if (height) {
+    containerStyle.height = typeof height === 'number' ? `${height}px` : height;
+  }
+
+  const renderLoadingContent = () => {
     switch (variant) {
-      case "dots":
+      case 'spinner':
+        return <div className={`loading-spinner loading-${size}`} />;
+      
+      case 'dots':
         return (
-          <div className="loading-dots">
-            {[1, 2, 3].map((dot) => (
-              <div
-                key={dot}
-                className={getClassName("loading-dot", sizeClass, colorClass)}
-                style={{ animationDelay: `${dot * 0.15}s` }}
-              />
-            ))}
+          <div className={`loading-dots loading-${size}`}>
+            <div className="loading-dot" />
+            <div className="loading-dot" />
+            <div className="loading-dot" />
           </div>
         );
-
-      case "pulse":
+      
+      case 'pulse':
+        return <div className={`loading-pulse loading-${size}`} />;
+      
+      case 'skeleton':
         return (
-          <div
-            className={getClassName("loading-pulse", sizeClass, colorClass)}
-          />
-        );
-
-      case "skeleton":
-        return (
-          <div className="loading-skeleton">
+          <div className={`loading-skeleton loading-${size}`}>
             <div className="skeleton-line" />
-            <div className="skeleton-line" style={{ width: "83%" }} />
-            <div className="skeleton-line" style={{ width: "66%" }} />
+            <div className="skeleton-line" style={{ width: '83%' }} />
+            <div className="skeleton-line" style={{ width: '66%' }} />
           </div>
         );
-
-      case "spinner":
-      default:
+      
+      case 'bars':
         return (
-          <div
-            className={getClassName("loading-spinner", sizeClass, colorClass)}
-          />
-        );
-    }
-  };
-
-  const renderNewVariants = () => {
-    const defaultSize = {
-      width: width || "60px",
-      height: height || "60px",
-      "--loading-color": color,
-    } as React.CSSProperties;
-
-    switch (variant) {
-      case "balls":
-        return (
-          <div className="loading-balls" style={defaultSize}>
-            {[...Array(3)].map((_, i) => (
-              <div 
-                key={i} 
-                className="ball" 
-                style={{ animationDelay: `${i * 0.2}s` }}
-              />
-            ))}
+          <div className={`loading-bars loading-${size}`}>
+            <div className="bar" />
+            <div className="bar" />
+            <div className="bar" />
+            <div className="bar" />
+            <div className="bar" />
           </div>
         );
-
-      case "bars":
+      
+      case 'bubbles':
         return (
-          <div className="loading-bars" style={defaultSize}>
-            {[...Array(5)].map((_, i) => (
-              <div 
-                key={i} 
-                className="bar" 
-                style={{ animationDelay: `${-1.0 + (i * 0.1)}s` }}
-              />
-            ))}
+          <div className={`loading-bubbles loading-${size}`}>
+            <div className="bubble" style={{ left: '20%', top: '20%', animationDelay: '0s' }} />
+            <div className="bubble" style={{ left: '60%', top: '20%', animationDelay: '0.2s' }} />
+            <div className="bubble" style={{ left: '20%', top: '60%', animationDelay: '0.4s' }} />
+            <div className="bubble" style={{ left: '60%', top: '60%', animationDelay: '0.6s' }} />
           </div>
         );
-
-      case "bubbles":
+      
+      case 'cylon':
         return (
-          <div className="loading-bubbles" style={defaultSize}>
-            {[...Array(8)].map((_, i) => (
-              <div 
-                key={i} 
-                className="bubble" 
-                style={{
-                  left: `${(i % 3) * 40}%`,
-                  top: `${Math.floor(i / 3) * 40}%`,
-                  animationDelay: `${i * 0.1}s`
-                }}
-              />
-            ))}
-          </div>
-        );
-
-      case "cubes":
-        return (
-          <div className="loading-cubes" style={defaultSize}>
-            <div className="cube1" />
-            <div className="cube2" />
-          </div>
-        );
-
-      case "cylon":
-        return (
-          <div className="loading-cylon" style={defaultSize}>
+          <div className={`loading-cylon loading-${size}`}>
             <div className="cylon-line" />
           </div>
         );
-
-      case "spin":
+      
+      case 'spinningBubbles':
         return (
-          <div className="loading-spin" style={defaultSize}>
-            <div className="spinner" />
+          <div className={`loading-spinning-bubbles loading-${size}`}>
+            <div className="bubble" style={{ transform: 'rotate(0deg) translateX(1.5em)' }} />
+            <div className="bubble" style={{ transform: 'rotate(120deg) translateX(1.5em)' }} />
+            <div className="bubble" style={{ transform: 'rotate(240deg) translateX(1.5em)' }} />
           </div>
         );
-
-      case "spinningBubbles":
+      
+      case 'ripple':
         return (
-          <div className="loading-spinning-bubbles" style={defaultSize}>
-            {[...Array(8)].map((_, i) => (
+          <div className={`loading-ripple loading-${size}`}>
+            <div className="ripple-circle" style={{ animationDelay: '0s' }} />
+            <div className="ripple-circle" style={{ animationDelay: '0.5s' }} />
+            <div className="ripple-circle" style={{ animationDelay: '1s' }} />
+          </div>
+        );
+      
+      case 'wave':
+        return (
+          <div className={`loading-wave loading-${size}`}>
+            <div className="wave-dot" style={{ animationDelay: '0s' }} />
+            <div className="wave-dot" style={{ animationDelay: '0.1s' }} />
+            <div className="wave-dot" style={{ animationDelay: '0.2s' }} />
+            <div className="wave-dot" style={{ animationDelay: '0.3s' }} />
+            <div className="wave-dot" style={{ animationDelay: '0.4s' }} />
+          </div>
+        );
+      
+      case 'orbit':
+        return (
+          <div className={`loading-orbit loading-${size}`}>
+            <div className="orbit-center" />
+            <div className="orbit-dot" style={{ animationDelay: '0s', transform: 'rotate(0deg) translateX(1.5em)' }} />
+            <div className="orbit-dot" style={{ animationDelay: '0.3s', transform: 'rotate(120deg) translateX(1.5em)' }} />
+            <div className="orbit-dot" style={{ animationDelay: '0.6s', transform: 'rotate(240deg) translateX(1.5em)' }} />
+          </div>
+        );
+      
+      case 'bounce':
+        return (
+          <div className={`loading-bounce loading-${size}`}>
+            <div className="bounce-ball" />
+            <div className="bounce-shadow" />
+          </div>
+        );
+      
+      case 'snake':
+        return (
+          <div className={`loading-snake loading-${size}`}>
+            {Array.from({ length: 8 }, (_, i) => (
+              <div key={i} className="snake-segment" style={{ animationDelay: `${i * 0.1}s` }} />
+            ))}
+          </div>
+        );
+      
+      case 'grid':
+        return (
+          <div className={`loading-grid loading-${size}`}>
+            {Array.from({ length: 9 }, (_, i) => (
+              <div key={i} className="grid-square" style={{ animationDelay: `${i * 0.1}s` }} />
+            ))}
+          </div>
+        );
+      
+      case 'heart':
+        return (
+          <div className={`loading-heart loading-${size}`}>
+            <div className="heart-shape" />
+          </div>
+        );
+      
+      case 'spiral':
+        return (
+          <div className={`loading-spiral loading-${size}`}>
+            {Array.from({ length: 6 }, (_, i) => (
               <div 
                 key={i} 
-                className="bubble" 
-                style={{
-                  left: `${(i % 3) * 40}%`,
-                  top: `${Math.floor(i / 3) * 40}%`,
-                  animationDelay: `${i * 0.1}s`,
-                  transform: `rotate(${i * 45}deg)`
-                }}
+                className="spiral-dot" 
+                style={{ 
+                  animationDelay: `${i * 0.2}s`, 
+                  transform: `rotate(${i * 60}deg) translateX(1.2em)` 
+                }} 
               />
             ))}
           </div>
         );
-
-      case "spokes":
-        return (
-          <div className="loading-spokes" style={defaultSize}>
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="spoke"
-                style={{
-                  transform: `rotate(${i * 45}deg)`,
-                  animationDelay: `${i * 0.1}s`
-                }}
-              />
-            ))}
-          </div>
-        );
-
-      case "blank":
-        return <div className="loading-blank" style={containerStyle} />;
+      
+      case 'blank':
+        return null;
+      
+      default:
+        return <div className={`loading-spinner loading-${size}`} />;
     }
   };
 
-  return (
-    <div className={containerClass}>
+  const content = (
+    <div 
+      className={`loading-container ${className}`}
+      style={containerStyle}
+    >
       <div className="loading-content">
-        {["spinner", "dots", "pulse", "skeleton"].indexOf(variant) !== -1
-          ? renderOriginalVariants()
-          : renderNewVariants()}
-
-        {!hideText && text && (
-          <span className={`loading-text loading-text-${size}`}>{text}</span>
+        {renderLoadingContent()}
+        {!hideText && variant !== 'blank' && (
+          <div className="loading-text">{text}</div>
         )}
       </div>
     </div>
   );
+
+  if (fullPage) {
+    return (
+      <div className="loading-fullpage">
+        {content}
+      </div>
+    );
+  }
+
+  return content;
 };
 
 export default Loading;

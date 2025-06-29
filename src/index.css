@@ -1,361 +1,840 @@
+/* Loading Component Styles */
 .loading-container {
-    width: 100%;
-  }
-  
-  .loading-fullpage {
-    position: fixed;
-    inset: 0;
-    height: 100vh;
-    background-color: #ffffff;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .dark .loading-fullpage {
-    background-color: #111827;
-  }
-  
-  .loading-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100px;
-    gap: 1rem;
-  }
-  
-  /* Size variants */
-  .loading-sm {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  
-  .loading-md {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-  
-  .loading-lg {
-    width: 4rem;
-    height: 4rem;
-  }
-  
-  /* Text sizes */
-  .loading-text {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  .loading-text-sm {
-    font-size: 0.875rem;
-  }
-  
-  .loading-text-md {
-    font-size: 1rem;
-  }
-  
-  .loading-text-lg {
-    font-size: 1.125rem;
-  }
-  
-  /* Spinner variant */
-  .loading-spinner {
-    border-radius: 50%;
-    border: 4px solid #e5e7eb;
-    animation: spin 1s linear infinite;
-  }
-  
-  /* Color variants for spinner */
-  .loading-spinner.loading-red { border-top-color: #fca5a5; }
-  .loading-spinner.loading-blue { border-top-color: #93c5fd; }
-  .loading-spinner.loading-green { border-top-color: #86efac; }
-  .loading-spinner.loading-yellow { border-top-color: #fde047; }
-  .loading-spinner.loading-purple { border-top-color: #d8b4fe; }
-  .loading-spinner.loading-pink { border-top-color: #f9a8d4; }
-  .loading-spinner.loading-gray { border-top-color: #d1d5db; }
-  
-  /* Dots variant */
-  .loading-dots {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .loading-dot {
-    border-radius: 50%;
-    animation: bounce 0.6s infinite;
-  }
-  
-  /* Color variants for dots */
-  .loading-dot.loading-red { background-color: #fca5a5; }
-  .loading-dot.loading-blue { background-color: #93c5fd; }
-  .loading-dot.loading-green { background-color: #86efac; }
-  .loading-dot.loading-yellow { background-color: #fde047; }
-  .loading-dot.loading-purple { background-color: #d8b4fe; }
-  .loading-dot.loading-pink { background-color: #f9a8d4; }
-  .loading-dot.loading-gray { background-color: #d1d5db; }
-  
-  /* Pulse variant */
-  .loading-pulse {
-    border-radius: 50%;
-    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-    opacity: 0.75;
-  }
-  
-  /* Color variants for pulse */
-  .loading-pulse.loading-red { background-color: #fca5a5; }
-  .loading-pulse.loading-blue { background-color: #93c5fd; }
-  .loading-pulse.loading-green { background-color: #86efac; }
-  .loading-pulse.loading-yellow { background-color: #fde047; }
-  .loading-pulse.loading-purple { background-color: #d8b4fe; }
-  .loading-pulse.loading-pink { background-color: #f9a8d4; }
-  .loading-pulse.loading-gray { background-color: #d1d5db; }
-  
-  /* Skeleton variant */
-  .loading-skeleton {
-    width: 100%;
-    max-width: 24rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  
-  .skeleton-line {
-    height: 1rem;
-    background-color: #e5e7eb;
-    border-radius: 0.25rem;
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    width: 100%;
-  }
-  
-  .dark .skeleton-line {
-    background-color: #374151;
-  }
+  --color-primary: var(--loading-color, #667eea);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2rem;
+}
 
-  /* New variant styles */
-.loading-balls {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.5rem;
+}
+
+.loading-text {
+  font-size: 0.875rem;
+  color: #718096;
+  text-align: center;
+}
+
+.loading-fullpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Size Classes */
+.loading-xs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.loading-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.loading-md {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+.loading-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.loading-xl {
+  width: 5rem;
+  height: 5rem;
+}
+.loading-2xl {
+  width: 7rem;
+  height: 7rem;
+}
+
+/* Spinner Animation */
+.loading-spinner {
+  border-radius: 50%;
+  border: 3px solid #e5e7eb;
+  border-top-color: var(--color-primary);
+  animation: spin 1s linear infinite;
+}
+
+/* Dots Animation */
+.loading-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.loading-dot {
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: dotDance 1.6s ease-in-out infinite;
+}
+
+.loading-dots.loading-xs .loading-dot {
+  width: 0.25em;
+  height: 0.25em;
+}
+.loading-dots.loading-sm .loading-dot {
+  width: 0.4em;
+  height: 0.4em;
+}
+.loading-dots.loading-md .loading-dot {
+  width: 0.6em;
+  height: 0.6em;
+}
+.loading-dots.loading-lg .loading-dot {
+  width: 0.8em;
+  height: 0.8em;
+}
+.loading-dots.loading-xl .loading-dot {
+  width: 1em;
+  height: 1em;
+}
+.loading-dots.loading-2xl .loading-dot {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.loading-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Pulse Animation */
+.loading-pulse {
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulseWave 2.5s infinite;
+}
+
+/* Bars Animation */
+.loading-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.15em;
+  height: 100%;
+}
+
+.loading-bars.loading-xs {
+  gap: 0.08em;
+}
+.loading-bars.loading-sm {
+  gap: 0.12em;
+}
+.loading-bars.loading-md {
+  gap: 0.15em;
+}
+.loading-bars.loading-lg {
+  gap: 0.2em;
+}
+.loading-bars.loading-xl {
+  gap: 0.25em;
+}
+.loading-bars.loading-2xl {
+  gap: 0.3em;
+}
+
+.loading-bars .bar {
+  width: 0.35em;
+  min-height: 0.4em;
+  border-radius: 0.2em 0.2em 0 0;
+  background: var(--color-primary);
+  animation: barRise 1.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.loading-bars.loading-xs .bar {
+  width: 0.2em;
+  min-height: 0.25em;
+}
+.loading-bars.loading-sm .bar {
+  width: 0.28em;
+  min-height: 0.32em;
+}
+.loading-bars.loading-md .bar {
+  width: 0.35em;
+  min-height: 0.4em;
+}
+.loading-bars.loading-lg .bar {
+  width: 0.45em;
+  min-height: 0.5em;
+}
+.loading-bars.loading-xl .bar {
+  width: 0.55em;
+  min-height: 0.6em;
+}
+.loading-bars.loading-2xl .bar {
+  width: 0.7em;
+  min-height: 0.8em;
+}
+
+.loading-bars .bar:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading-bars .bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loading-bars .bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.loading-bars .bar:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.loading-bars .bar:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/* Bubbles Animation */
+.loading-bubbles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-bubbles .bubble {
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: bubbleFloat 2s ease-in-out infinite;
+}
+
+/* Cylon Animation */
+.loading-cylon {
+  position: relative;
+  width: 100%;
+  height: 0.4em;
+  border-radius: 0.3em;
+  background: linear-gradient(
+    to right,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(102, 126, 234, 0.3) 50%,
+    rgba(102, 126, 234, 0.1) 100%
+  );
+  overflow: hidden;
+  min-width: 3rem;
+}
+
+.loading-cylon.loading-xs {
+  height: 0.2em;
+  min-width: 2rem;
+}
+.loading-cylon.loading-sm {
+  height: 0.3em;
+  min-width: 2.5rem;
+}
+.loading-cylon.loading-md {
+  height: 0.4em;
+  min-width: 3rem;
+}
+.loading-cylon.loading-lg {
+  height: 0.6em;
+  min-width: 4rem;
+}
+.loading-cylon.loading-xl {
+  height: 0.8em;
+  min-width: 5rem;
+}
+.loading-cylon.loading-2xl {
+  height: 1em;
+  min-width: 6rem;
+}
+
+.loading-cylon .cylon-line {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  border-radius: 0.3em;
+  background: var(--color-primary);
+  animation: cylonScan 3s ease-in-out infinite;
+}
+
+/* Spinning Bubbles Animation */
+.loading-spinning-bubbles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinning-bubbles .bubble {
+  position: absolute;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: orbitSpin 2.8s linear infinite;
+}
+
+/* Ripple Animation */
+.loading-ripple {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-ripple .ripple-circle {
+  position: absolute;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  animation: rippleExpand 1.5s ease-out infinite;
+}
+
+/* Wave Animation */
+.loading-wave {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.2em;
+  height: 100%;
+}
+
+.loading-wave.loading-xs {
+  gap: 0.1em;
+}
+.loading-wave.loading-sm {
+  gap: 0.15em;
+}
+.loading-wave.loading-md {
+  gap: 0.2em;
+}
+.loading-wave.loading-lg {
+  gap: 0.25em;
+}
+.loading-wave.loading-xl {
+  gap: 0.3em;
+}
+.loading-wave.loading-2xl {
+  gap: 0.4em;
+}
+
+.loading-wave .wave-dot {
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: waveMotion 1.2s ease-in-out infinite;
+}
+
+.loading-wave.loading-xs .wave-dot {
+  width: 0.15em;
+  height: 0.15em;
+}
+.loading-wave.loading-sm .wave-dot {
+  width: 0.22em;
+  height: 0.22em;
+}
+.loading-wave.loading-md .wave-dot {
+  width: 0.3em;
+  height: 0.3em;
+}
+.loading-wave.loading-lg .wave-dot {
+  width: 0.4em;
+  height: 0.4em;
+}
+.loading-wave.loading-xl .wave-dot {
+  width: 0.5em;
+  height: 0.5em;
+}
+.loading-wave.loading-2xl .wave-dot {
+  width: 0.6em;
+  height: 0.6em;
+}
+
+/* Orbit Animation */
+.loading-orbit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-orbit .orbit-center {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  position: absolute;
+}
+
+.loading-orbit .orbit-dot {
+  position: absolute;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: orbitRotate 2s linear infinite;
+}
+
+/* Bounce Animation */
+.loading-bounce {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.loading-bounce .bounce-ball {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: bounceBall 1.5s ease-in-out infinite;
+}
+
+.loading-bounce .bounce-shadow {
+  position: absolute;
+  bottom: 0;
+  width: 0.6em;
+  height: 0.15em;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  animation: bounceShadow 1.5s ease-in-out infinite;
+}
+
+/* Snake Animation */
+.loading-snake {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1em;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-snake.loading-xs {
+  gap: 0.05em;
+}
+.loading-snake.loading-sm {
+  gap: 0.08em;
+}
+.loading-snake.loading-md {
+  gap: 0.1em;
+}
+.loading-snake.loading-lg {
+  gap: 0.12em;
+}
+.loading-snake.loading-xl {
+  gap: 0.15em;
+}
+.loading-snake.loading-2xl {
+  gap: 0.2em;
+}
+
+.loading-snake .snake-segment {
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: snakeMove 1.6s ease-in-out infinite;
+}
+
+.loading-snake.loading-xs .snake-segment {
+  width: 0.15em;
+  height: 0.15em;
+}
+.loading-snake.loading-sm .snake-segment {
+  width: 0.22em;
+  height: 0.22em;
+}
+.loading-snake.loading-md .snake-segment {
+  width: 0.3em;
+  height: 0.3em;
+}
+.loading-snake.loading-lg .snake-segment {
+  width: 0.4em;
+  height: 0.4em;
+}
+.loading-snake.loading-xl .snake-segment {
+  width: 0.5em;
+  height: 0.5em;
+}
+.loading-snake.loading-2xl .snake-segment {
+  width: 0.6em;
+  height: 0.6em;
+}
+
+/* Grid Animation */
+.loading-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.1em;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-grid.loading-xs {
+  gap: 0.05em;
+}
+.loading-grid.loading-sm {
+  gap: 0.08em;
+}
+.loading-grid.loading-md {
+  gap: 0.1em;
+}
+.loading-grid.loading-lg {
+  gap: 0.12em;
+}
+.loading-grid.loading-xl {
+  gap: 0.15em;
+}
+.loading-grid.loading-2xl {
+  gap: 0.2em;
+}
+
+.loading-grid .grid-square {
+  background: var(--color-primary);
+  border-radius: 0.1em;
+  animation: gridPulse 1.8s ease-in-out infinite;
+  min-height: 0.2em;
+  min-width: 0.2em;
+}
+
+/* Heart Animation */
+.loading-heart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-heart .heart-shape {
+  position: relative;
+  width: 1em;
+  height: 0.8em;
+  animation: heartBeat 1.2s ease-in-out infinite;
+}
+
+.loading-heart .heart-shape::before,
+.loading-heart .heart-shape::after {
+  content: "";
+  position: absolute;
+  width: 0.5em;
+  height: 0.8em;
+  background: var(--color-primary);
+  border-radius: 0.5em 0.5em 0 0;
+  transform-origin: 0 1em;
+}
+
+.loading-heart .heart-shape::before {
+  left: 0.5em;
+  transform: rotate(-45deg);
+}
+
+.loading-heart .heart-shape::after {
+  left: -0.1rem;
+  top: -0.35em;
+  transform: rotate(45deg);
+}
+
+/* Spiral Animation */
+.loading-spiral {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spiral .spiral-dot {
+  position: absolute;
+  width: 0.25em;
+  height: 0.25em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: spiralRotate 2.4s linear infinite;
+}
+
+/* Skeleton Animation */
+.loading-skeleton {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.loading-skeleton.loading-xs {
+  gap: 0.2rem;
+}
+.loading-skeleton.loading-sm {
+  gap: 0.3rem;
+}
+.loading-skeleton.loading-md {
+  gap: 0.4rem;
+}
+.loading-skeleton.loading-lg {
+  gap: 0.5rem;
+}
+.loading-skeleton.loading-xl {
+  gap: 0.6rem;
+}
+.loading-skeleton.loading-2xl {
+  gap: 0.8rem;
+}
+
+.skeleton-line {
+  height: 0.6rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    110deg,
+    #e2e8f0 8%,
+    #f1f5f9 18%,
+    #e2e8f0 33%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShine 2s linear infinite;
+}
+
+.loading-skeleton.loading-xs .skeleton-line {
+  height: 0.3rem;
+}
+.loading-skeleton.loading-sm .skeleton-line {
+  height: 0.45rem;
+}
+.loading-skeleton.loading-md .skeleton-line {
+  height: 0.6rem;
+}
+.loading-skeleton.loading-lg .skeleton-line {
+  height: 0.8rem;
+}
+.loading-skeleton.loading-xl .skeleton-line {
+  height: 1rem;
+}
+.loading-skeleton.loading-2xl .skeleton-line {
+  height: 1.2rem;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
-  .loading-balls .ball {
-    width: 25%;
-    height: 25%;
-    background-color: var(--loading-color, currentColor);
-    border-radius: 50%;
-    animation: ballBounce 0.7s infinite alternate;
+}
+
+@keyframes dotDance {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.9) translateY(0);
   }
-  
-  .loading-bars {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3em;
-    height: 100%;
+  40% {
+    transform: scale(1.3) translateY(-0.8em);
   }
-  
-  .loading-bars .bar {
-    width: 15%;
-    height: 100%;
-    background-color: var(--loading-color, currentColor);
-    animation: barStretch 1s infinite ease-in-out;
+}
+
+@keyframes pulseWave {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .loading-bubbles {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
   }
-  
-  .loading-bubbles .bubble {
-    position: absolute;
-    width: 20%;
-    height: 20%;
-    background-color: var(--loading-color, currentColor);
-    border-radius: 50%;
-    animation: bubbleScale 1.2s infinite ease-in-out;
+}
+
+@keyframes barRise {
+  0%,
+  100% {
+    transform: scaleY(0.3);
   }
-  
-  .loading-cubes {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  50% {
+    transform: scaleY(1.2);
   }
-  
-  .loading-cubes .cube1,
-  .loading-cubes .cube2 {
-    background-color: var(--loading-color, currentColor);
-    width: 35%;
-    height: 35%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: cubeDance 1.8s infinite ease-in-out;
+}
+
+@keyframes bubbleFloat {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0;
   }
-  
-  .loading-cubes .cube2 {
-    animation-delay: -0.9s;
+  40% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .loading-cylon {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: color-mix(in srgb, var(--loading-color, currentColor) 20%, transparent);
-    overflow: hidden;
+}
+
+@keyframes cylonScan {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
   }
-  
-  .loading-cylon .cylon-line {
-    position: absolute;
-    width: 20%;
-    height: 100%;
-    background-color: var(--loading-color, currentColor);
-    animation: cylonScan 1s infinite ease-in-out alternate;
+  20%,
+  80% {
+    opacity: 1;
   }
-  
-  .loading-spin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  100% {
+    transform: translateX(420%);
+    opacity: 0;
   }
-  
-  .loading-spin .spinner {
-    width: 100%;
-    height: 100%;
-    border: 4px solid transparent;
-    border-top-color: var(--loading-color, currentColor);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+}
+
+@keyframes orbitSpin {
+  0% {
+    transform: rotate(0deg) translateX(1.5em) rotate(0deg);
   }
-  
-  .loading-spinning-bubbles {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  100% {
+    transform: rotate(360deg) translateX(1.5em) rotate(-360deg);
   }
-  
-  .loading-spinning-bubbles .bubble {
-    position: absolute;
-    width: 20%;
-    height: 20%;
-    background-color: var(--loading-color, currentColor);
-    border-radius: 50%;
-    transform-origin: center;
-    animation: spinningBubbles 1.2s infinite ease-in-out both;
+}
+
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 1;
   }
-  
-  .loading-spokes {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  100% {
+    transform: scale(2);
+    opacity: 0;
   }
-  
-  .loading-spokes .spoke {
-    position: absolute;
-    width: 2px;
-    height: 35%;
-    background-color: var(--loading-color, currentColor);
-    left: 50%;
-    top: 50%;
-    transform-origin: 0% 50%;
-    animation: spokesFade 0.8s linear infinite;
+}
+
+@keyframes waveMotion {
+  0%,
+  60%,
+  100% {
+    transform: scaleY(0.4);
   }
-  
-  /* Animations */
-  @keyframes ballBounce {
-    to {
-      transform: translateY(-100%);
-    }
+  30% {
+    transform: scaleY(1.6);
   }
-  
-  @keyframes barStretch {
-    0%, 40%, 100% { 
-      transform: scaleY(0.4); 
-    }
-    20% { 
-      transform: scaleY(1.0); 
-    }
+}
+
+@keyframes orbitRotate {
+  0% {
+    transform: rotate(0deg) translateX(1.5em) rotate(0deg);
   }
-  
-  @keyframes bubbleScale {
-    0%, 80%, 100% { 
-      transform: scale(0); 
-    }
-    40% { 
-      transform: scale(1.0); 
-    }
+  100% {
+    transform: rotate(360deg) translateX(1.5em) rotate(-360deg);
   }
-  
-  @keyframes cubeDance {
-    25% { 
-      transform: translateX(100%); 
-    }
-    50% { 
-      transform: translate(100%, 100%); 
-    }
-    75% { 
-      transform: translateY(100%); 
-    }
+}
+
+@keyframes bounceBall {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  
-  @keyframes cylonScan {
-    from { 
-      transform: translateX(-100%); 
-    }
-    to { 
-      transform: translateX(200%); 
-    }
+  50% {
+    transform: translateY(-2em);
   }
-  
-  @keyframes spinningBubbles {
-    0%, 80%, 100% { 
-      transform: scale(0) rotate(0); 
-    }
-    40% { 
-      transform: scale(1.0) rotate(180deg); 
-    }
+}
+
+@keyframes bounceShadow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
   }
-  
-  @keyframes spokesFade {
-    0% { 
-      opacity: 0.1; 
-    }
-    50% { 
-      opacity: 1.0; 
-    }
-    100% { 
-      opacity: 0.1; 
-    }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.1;
   }
-  
-  /* Animations */
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+}
+
+@keyframes snakeMove {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
   }
-  
-  @keyframes ping {
-    75%, 100% {
-      transform: scale(2);
-      opacity: 0;
-    }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
   }
-  
-  @keyframes pulse {
-    50% {
-      opacity: .5;
-    }
+}
+
+@keyframes gridPulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
   }
-  
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(-25%);
-    }
-    50% {
-      transform: translateY(0);
-    }
+  50% {
+    transform: scale(1);
+    opacity: 1;
   }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25%,
+  75% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+@keyframes spiralRotate {
+  0% {
+    transform: rotate(0deg) translateX(1.2em) scale(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: rotate(90deg) translateX(1.2em) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: rotate(270deg) translateX(1.2em) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) translateX(1.2em) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes skeletonShine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

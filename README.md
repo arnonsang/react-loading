@@ -5,21 +5,24 @@ A highly customizable and lightweight React loading component library that provi
 ## Installation
 
 ```bash
-npm install @arnonsang/react-loading
+npm i @arnonsang/react-loading
 # or
 yarn add @arnonsang/react-loading
 # or
 pnpm add @arnonsang/react-loading
+# or
+bun add @arnonsang/react-loading
 ```
 
 ## Features
 
-- 🎨 Multiple loading variants (spinner, dots, pulse, skeleton, and more)
-- 📐 Customizable sizes and colors
-- 🎯 TypeScript support
-- 🪶 Lightweight and zero dependencies
-- 📱 Responsive and accessible
-- 🔧 Easy to customize and extend
+- 🎨 **17 Beautiful Loading Variants** - From classic spinners to modern animations
+- 📐 **6 Tailwind-Inspired Sizes** - xs, sm, md, lg, xl, 2xl for perfect scaling
+- 🎯 **Full TypeScript Support** - Complete type definitions and IntelliSense
+- 🪶 **Zero Dependencies** - Lightweight with only React as peer dependency
+- 📱 **Responsive & Accessible** - Works on all devices with accessibility support
+- 🔧 **Highly Customizable** - Colors, dimensions, delays, and styling options
+- ⚡ **Optimized Performance** - CSS-based animations for smooth 60fps
 
 ## Usage
 
@@ -48,10 +51,10 @@ function CustomLoadingExample() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `string` | `"spinner"` | Loading animation variant. Available options: `"spinner"`, `"dots"`, `"pulse"`, `"skeleton"`, `"blank"`, `"balls"`, `"bars"`, `"bubbles"`, `"cubes"`, `"cylon"`, `"spin"`, `"spinningBubbles"`, `"spokes"` |
-| `size` | `string` | `"md"` | Size of the loading animation. Options: `"sm"`, `"md"`, `"lg"` |
+| `variant` | `string` | `"spinner"` | Loading animation variant. Available options: `"spinner"`, `"dots"`, `"pulse"`, `"skeleton"`, `"blank"`, `"bars"`, `"bubbles"`, `"cylon"`, `"spinningBubbles"`, `"ripple"`, `"wave"`, `"orbit"`, `"bounce"`, `"snake"`, `"grid"`, `"heart"`, `"spiral"` |
+| `size` | `string` | `"md"` | Size of the loading animation. Options: `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, `"2xl"` |
 | `themeColor` | `string` | `"blue"` | Predefined color theme. Options: `"red"`, `"blue"`, `"green"`, `"yellow"`, `"purple"`, `"pink"`, `"gray"` |
-| `color` | `string` | `"#ffffff"` | Custom color for the loading animation |
+| `color` | `string` | `"#4299e1"` | Custom color for the loading animation (overrides themeColor) |
 | `width` | `number \| string` | - | Custom width of the loading container |
 | `height` | `number \| string` | - | Custom height of the loading container |
 | `delay` | `number` | `0` | Delay before the animation starts (in milliseconds) |
@@ -60,24 +63,45 @@ function CustomLoadingExample() {
 | `hideText` | `boolean` | `false` | Whether to hide the loading text |
 | `className` | `string` | `""` | Additional CSS class names |
 
-## Variants
+## All 17 Variants
 
-### Basic Variants
-- `spinner`: Classic rotating spinner
-- `dots`: Three bouncing dots
-- `pulse`: Pulsing circle
-- `skeleton`: Skeleton loading placeholder
+### Basic Animations
+- **`spinner`** - Classic rotating spinner (perfect for general loading)
+- **`dots`** - Three bouncing dots with smooth motion
+- **`pulse`** - Pulsing circle with expanding rings
+- **`bars`** - Animated vertical bars rising and falling
 
-### Advanced Variants
-- `balls`: Bouncing balls animation
-- `bars`: Animated loading bars
-- `bubbles`: Floating bubbles
-- `cubes`: rotating cubes
-- `cylon`: Scanning animation
-- `spin`: Smooth spinning animation
-- `spinningBubbles`: Rotating bubble pattern
-- `spokes`: Rotating spokes pattern
-- `blank`: Empty placeholder
+### Advanced Animations  
+- **`skeleton`** - Skeleton loading placeholder with shimmer effect
+- **`bubbles`** - Floating bubbles appearing and disappearing
+- **`cylon`** - Scanning line animation (Battlestar Galactica inspired)
+- **`spinningBubbles`** - Rotating bubbles around central point
+
+### Modern Effects
+- **`ripple`** - Expanding ripple effect with concentric circles
+- **`wave`** - Wave motion animation with sequential dots
+- **`orbit`** - Orbiting dots around center with physics
+- **`bounce`** - Bouncing ball with realistic shadow
+
+### Creative Variants
+- **`snake`** - Snake-like movement with flowing segments  
+- **`grid`** - 3x3 grid of pulsing squares
+- **`heart`** - Heartbeat pulse animation
+- **`spiral`** - Spiral rotating dots with fade effect
+- **`blank`** - Invisible placeholder for conditional loading
+
+## Size Options
+
+Following Tailwind CSS size conventions:
+
+| Size | Dimensions | Use Case |
+|------|------------|----------|
+| `xs` | 12px | Inline text, small buttons |
+| `sm` | 20px | Form inputs, compact UI |
+| `md` | 36px | **Default** - General purpose |
+| `lg` | 56px | Card headers, prominent sections |
+| `xl` | 80px | Page centers, major loading states |
+| `2xl` | 112px | Full-screen overlays, splash screens |
 
 ## Examples
 
@@ -88,7 +112,15 @@ function CustomLoadingExample() {
 // Full-page loading
 <Loading variant="dots" fullPage={true} />
 
-// Custom size and themed loading
+// Different sizes (Tailwind-inspired)
+<Loading variant="spinner" size="xs" />   {/* 12px */}
+<Loading variant="dots" size="sm" />     {/* 20px */}
+<Loading variant="pulse" size="md" />    {/* 36px - default */}
+<Loading variant="bars" size="lg" />     {/* 56px */}
+<Loading variant="grid" size="xl" />     {/* 80px */}
+<Loading variant="heart" size="2xl" />   {/* 112px */}
+
+// Custom themed loading
 <Loading
   variant="pulse"
   size="lg"
@@ -101,14 +133,78 @@ function CustomLoadingExample() {
 
 // Delayed animation
 <Loading variant="spinningBubbles" delay={500} />
+
+// Advanced variants with custom styling
+<Loading variant="ripple" size="lg" color="#e91e63" />
+<Loading variant="wave" size="xl" themeColor="purple" />
+<Loading variant="orbit" size="lg" color="#2196f3" />
+<Loading variant="bounce" size="md" color="#ff9800" />
+<Loading variant="snake" size="sm" themeColor="green" />
+<Loading variant="grid" size="lg" color="#607d8b" />
+<Loading variant="heart" size="xl" color="#f44336" />
+<Loading variant="spiral" size="2xl" delay={200} />
+
+// Custom dimensions (overrides size)
+<Loading variant="skeleton" width={200} height={100} />
+<Loading variant="cylon" width="300px" height="8px" />
+<Loading variant="orbit" width={120} height={120} />
 ```
 
 ## TypeScript Support
 
-This package includes TypeScript definitions. You can import types directly:
+This package includes complete TypeScript definitions with full IntelliSense support:
 
 ```typescript
-import { LoadingProps } from '@arnonsang/react-loading';
+import Loading, { 
+  LoadingProps, 
+  LoadingVariant, 
+  LoadingSize, 
+  LoadingThemeColor 
+} from '@arnonsang/react-loading';
+
+// Type-safe component usage
+const MyComponent: React.FC = () => {
+  const variant: LoadingVariant = 'spinner';
+  const size: LoadingSize = 'lg';
+  
+  return (
+    <Loading 
+      variant={variant}
+      size={size}
+      themeColor="blue"
+      delay={300}
+    />
+  );
+};
+```
+
+## Performance & Best Practices
+
+- **CSS-based animations** ensure smooth 60fps performance
+- **Zero JavaScript animations** - all effects use CSS transforms and keyframes  
+- **Lightweight bundle** - ~15KB minified, ~5KB gzipped
+- **Tree-shakeable** - Only import what you need
+- **Server-side rendering** compatible
+- **Accessibility-friendly** - Respects `prefers-reduced-motion`
+
+```jsx
+// Conditional loading with performance in mind
+{isLoading && (
+  <Loading 
+    variant="dots" 
+    size="sm" 
+    hideText={true}
+    delay={100} // Prevents flash for quick loads
+  />
+)}
+
+// Full-page loading overlay
+<Loading 
+  variant="spinner"
+  size="xl" 
+  fullPage={true}
+  text="Loading your content..."
+/>
 ```
 
 ## Browser Support
