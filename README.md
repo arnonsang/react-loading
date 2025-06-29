@@ -1,6 +1,14 @@
 # @arnonsang/react-loading
 
-A highly customizable and lightweight React loading component library that provides multiple loading animations and variants for your React applications.
+[![npm version](https://badge.fury.io/js/@arnonsang%2Freact-loading.svg)](https://badge.fury.io/js/@arnonsang%2Freact-loading)
+[![npm downloads](https://img.shields.io/npm/dm/@arnonsang/react-loading.svg)](https://www.npmjs.com/package/@arnonsang/react-loading)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@arnonsang/react-loading.svg)](https://bundlephobia.com/package/@arnonsang/react-loading)
+[![license](https://img.shields.io/npm/l/@arnonsang/react-loading.svg)](https://github.com/arnonsang/react-loading/blob/main/LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-%3E%3D16.8.0-blue.svg)](https://reactjs.org/)
+[![GitHub stars](https://img.shields.io/github/stars/arnonsang/react-loading.svg?style=social&label=Star)](https://github.com/arnonsang/react-loading)
+
+A customizable and lightweight React loading component powered by **pure CSS**. Zero JavaScript animations for optimal performance - all effects use CSS transforms and keyframes for smooth rendering in your React applications.
 
 ## Installation
 
