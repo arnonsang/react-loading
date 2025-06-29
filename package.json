@@ -1,6 +1,6 @@
 {
     "name": "@arnonsang/react-loading",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "A highly customizable React loading component library with 17 beautiful animations, and flexible children API",
     "homepage": "https://react-loading.iamickdev.com",
     "repository": {
