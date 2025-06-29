@@ -158,6 +158,136 @@ Following Tailwind CSS size conventions:
 <Loading variant="orbit" width={120} height={120} />
 ```
 
+## CSS Customization
+
+For advanced customization, you can override styles using CSS classes. Each variant has specific class names:
+
+### CSS Class Structure
+
+```css
+/* Main container */
+.loading-container { }
+
+/* Content wrapper */
+.loading-content { }
+
+/* Loading text */
+.loading-text { }
+
+/* Full page overlay */
+.loading-fullpage { }
+
+/* Size classes */
+.loading-xs, .loading-sm, .loading-md, .loading-lg, .loading-xl, .loading-2xl { }
+```
+
+### Variant-Specific Classes
+
+Each loading variant uses specific CSS classes that you can customize:
+
+```css
+/* Spinner */
+.loading-spinner { }
+
+/* Dots */
+.loading-dots { }
+.loading-dot { }
+
+/* Pulse */
+.loading-pulse { }
+
+/* Skeleton */
+.loading-skeleton { }
+.skeleton-line { }
+
+/* Bars */
+.loading-bars { }
+.bar { }
+
+/* Bubbles */
+.loading-bubbles { }
+.bubble { }
+
+/* Cylon */
+.loading-cylon { }
+.cylon-line { }
+
+/* Spinning Bubbles */
+.loading-spinning-bubbles { }
+
+/* Ripple */
+.loading-ripple { }
+.ripple-circle { }
+
+/* Wave */
+.loading-wave { }
+.wave-dot { }
+
+/* Orbit */
+.loading-orbit { }
+.orbit-center { }
+.orbit-dot { }
+
+/* Bounce */
+.loading-bounce { }
+.bounce-ball { }
+.bounce-shadow { }
+
+/* Snake */
+.loading-snake { }
+.snake-segment { }
+
+/* Grid */
+.loading-grid { }
+.grid-square { }
+
+/* Heart */
+.loading-heart { }
+.heart-shape { }
+
+/* Spiral */
+.loading-spiral { }
+.spiral-dot { }
+```
+
+### Custom Styling Examples
+
+```css
+/* Custom spinner with gradient */
+.my-custom-loading .loading-spinner {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border-radius: 50%;
+}
+
+/* Custom dots with different colors */
+.my-custom-loading .loading-dot:nth-child(1) { background: #ff6b6b; }
+.my-custom-loading .loading-dot:nth-child(2) { background: #4ecdc4; }
+.my-custom-loading .loading-dot:nth-child(3) { background: #45b7d1; }
+
+/* Custom text styling */
+.my-custom-loading .loading-text {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+/* Custom container background */
+.my-custom-loading.loading-container {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+```
+
+```jsx
+// Usage with custom className
+<Loading 
+  variant="spinner" 
+  className="my-custom-loading"
+  text="Custom Loading..."
+/>
+```
+
 ## TypeScript Support
 
 This package includes complete TypeScript definitions with full IntelliSense support:
